@@ -16,18 +16,7 @@ var Analyzer = &analysis.Analyzer{
 	Run:      run,
 }
 
-func init() {
-	Analyzer.Flags.BoolVar(&ignoreGeneratedFiles, "ignore-generated", false, "ignore files with generated comment in the header")
-}
-
 func run(pass *analysis.Pass) (interface{}, error) {
-	if ignoreGeneratedFiles {
-		for _, f := range pass.Files {
-			if isGeneratedFile(f.Comments) {
-				return nil, nil
-			}
-		}
-	}
 	insp := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
 	nodeFilter := []ast.Node{
 		(*ast.TypeSpec)(nil),

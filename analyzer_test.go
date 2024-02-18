@@ -11,13 +11,3 @@ func TestAnalyzer(t *testing.T) {
 		analysistest.Run(t, testdata, Analyzer, pkg)
 	}
 }
-
-func TestAnalyzerIgnoringGeneratedFiles(t *testing.T) {
-	oldIgnoreGeneratedFiles := ignoreGeneratedFiles
-	ignoreGeneratedFiles = true
-	defer func() {
-		ignoreGeneratedFiles = oldIgnoreGeneratedFiles
-	}()
-	testdata := analysistest.TestData()
-	analysistest.Run(t, testdata, Analyzer, "ignoregenerated")
-}
