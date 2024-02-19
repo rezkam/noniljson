@@ -11,7 +11,7 @@ import (
 
 var Analyzer = &analysis.Analyzer{
 	Name:     "noniljson",
-	Doc:      "checks that nullable fields in structs used for JSON marshaling use 'omitempty' or are otherwise correctly handled",
+	Doc:      "checks that nullable fields in structs used for JSON marshaling use 'omitempty' and correctly handled",
 	Requires: []*analysis.Analyzer{inspect.Analyzer},
 	Run:      run,
 }
